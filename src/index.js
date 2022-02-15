@@ -1,12 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './style.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Home from "./Components/Pages/Home";
+import Data from "./Components/Pages/Data";
+import Cool from "./Components/Pages/Cool";
+import BoxList from "./Components/BoxList";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <BrowserRouter>
+          <Routes>
+              <Route path={"/"} element={<App/>}>
+                  <Route index element={<Home/>}/>
+                  <Route path={"Cool"} element={<Cool/>}/>
+                  <Route path={"Data"} element={<Data/>}>
+                  <Route index element={<BoxList/>}/>
+                  </Route>
+              </Route>
+          </Routes>
+      </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
